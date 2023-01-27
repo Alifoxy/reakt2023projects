@@ -16,7 +16,7 @@ export const PostByCommentPage = () => {
     if (!post) return null;
     return (
         <div className={'post_style'}>
-            <div className={'name_of_page'}><h2>This comment belongs to the following post:</h2></div>
+            <div className={'head_of_post'}>This comment belongs to the following post:</div>
             <div>PostID: {postId}</div>
             <div>Title: {post.title}</div>
             <div>Content: {post.body}</div>
