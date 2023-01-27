@@ -16,12 +16,7 @@ export const Comments = () => {
             {comments.map(item => {
                 const {postId, id, name} = item;
                 return (
-                    <div
-                        key={id}
-                        style={{
-                            background: 'lightgrey'
-                        }}
-                    >
+                    <div key={id}>
                         <div>ID: {id}</div>
                         <div>PostID: {postId}</div>
                         <div>Comment Name: {name}</div>
