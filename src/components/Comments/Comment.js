@@ -8,7 +8,7 @@ export const Comment = ({comment}) => {
     return (
         <div className={'item2'}>
             <div>id:{id}</div>
-            <div>postID:{postId}</div>
+            <div>PostID:{postId}</div>
             <div>name:{name}</div>
             <button onClick={() => navigate(postId.toString())}>Get Post</button>
         </div>
