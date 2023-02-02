@@ -1,7 +1,9 @@
 import React from 'react';
+import { Outlet } from "react-router-dom";
+
 import {Comments} from "../../components/Comments/Comments";
 import '../Add_style.css';
-import { Outlet } from "react-router-dom";
+
 
 const CommentsPage = () => {
     return (

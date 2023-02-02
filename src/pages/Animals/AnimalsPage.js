@@ -1,17 +1,16 @@
 import React from 'react';
-import {Comments} from "../../components/Comments/Comments";
+import {AnimalForm} from "../../components/Cats&Dogs/NewAnimalForm";
 import '../Add_style.css';
 import { Outlet } from "react-router-dom";
 
-const CommentsPage = () => {
+const AnimalsPage = () => {
     return (
         <div>
-            <h2 className={'name_of_page'}>Comments</h2>
+            <h2 className={'name_of_page'}>Animals</h2>
             <Outlet />
-            <Comments/>
-
+            <AnimalForm/>
         </div>
     );
 };
 
-export default CommentsPage;
+export default AnimalsPage;

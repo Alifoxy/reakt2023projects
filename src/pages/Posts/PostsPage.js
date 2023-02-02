@@ -1,5 +1,6 @@
 import React from 'react';
 import {Outlet} from "react-router-dom";
+
 import '../Add_style.css';
 import {Posts} from "../../components/Posts/Posts";
 

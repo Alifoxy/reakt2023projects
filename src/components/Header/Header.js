@@ -1,6 +1,7 @@
 import React from 'react';
-import css from './Header.module.css';
 import { NavLink } from "react-router-dom";
+import css from './Header.module.css';
+
 
 const Header = () => {
     return (
@@ -8,6 +9,7 @@ const Header = () => {
             <NavLink to={''}>Home</NavLink>
             <NavLink to={'comments'}>Comments</NavLink>
             <NavLink to={'posts'}>Posts</NavLink>
+            <NavLink to={'animals'}>Animals</NavLink>
         </div>
     );
 };

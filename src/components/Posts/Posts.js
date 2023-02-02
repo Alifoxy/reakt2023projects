@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from "react";
+
 import {Post} from "./Post";
 import {getPosts} from "../../services/api/getInfo/getPostsInfo";
 

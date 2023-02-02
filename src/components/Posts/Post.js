@@ -1,4 +1,5 @@
 import React from 'react';
+
 import '../Add_style.css';
 
 export const Post = ({post}) => {

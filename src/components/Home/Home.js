@@ -1,5 +1,7 @@
 import React from 'react';
+
 import '../Add_style.css'
+
 const Home = () => {
     return (
         <div className={'txt'}>
