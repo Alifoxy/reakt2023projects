@@ -1,12 +1,12 @@
 import React from 'react';
-import {AnimalForm} from './components/Cats&Dogs/NewAnimalForm'
-
-
+import {Comments} from './components/Comments/Comments'
+import {Posts} from "./components/Posts/Posts";
 
 const App = () => {
     return (
         <div>
-            <AnimalForm/>
+            <Comments/>
+            <Posts/>
         </div>
     );
 }

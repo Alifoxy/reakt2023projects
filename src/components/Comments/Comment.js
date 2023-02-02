@@ -1,17 +1,20 @@
 import React from 'react';
+import {Component} from "react";
 
 import '../Add_style.css';
 
+class Comment extends Component{
 
-export const Comment = ({comment}) => {
-    const {id, postId, name} = comment;
-    return (
-        <div className={'item2'}>
-            <div>id:{id}</div>
-            <div>PostID:{postId}</div>
-            <div>name:{name}</div>
-        </div>
-    );
-
+    render(){
+        const {id, postId, name} = this.props.comment;
+        return (
+            <div className={'item2'}>
+                <div>id:{id}</div>
+                <div>PostID:{postId}</div>
+                <div>name:{name}</div>
+            </div>
+        );
+    }
 }
+export {Comment}
 

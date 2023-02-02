@@ -1,17 +1,22 @@
 import React from 'react';
+import {Component} from "react";
 
 import '../Add_style.css';
 
-export const Post = ({post}) => {
-    const {id, title, body} = post;
-    return (
-        <div className={'item3'}>
-            <div>PostID: {id}</div>
-            <div>Title: {title}</div>
-            <div>Content: {body}</div>
+class Post extends Component {
 
-        </div>
-    );
-
+    render() {
+        const {id, userId, title, body} = this.props.post;
+        return (
+            <div>
+                <div>id: {id}</div>
+                <div>userId: {userId}</div>
+                <div>title: {title}</div>
+                <div>body: {body}</div>
+            </div>
+        )
+    }
 }
+
+export {Post}
 

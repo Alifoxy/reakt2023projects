@@ -7,12 +7,12 @@ import {AddNewAnimal} from "./AddNewAnimal";
 export const AnimalForm = () => {
     const { register, handleSubmit, reset, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(animalValidator)});
 
-    const submit1 = async () => {
+    const submit1 = () => {
         AddNewAnimal('AddCat');
         reset()
     }
 
-    const submit2 = async () => {
+    const submit2 = () => {
         AddNewAnimal('AddDog');
         reset()
     }

@@ -1,20 +1,25 @@
 import React from 'react';
-import { useEffect, useState } from "react";
+import {Component} from "react";
 
 import {Post} from "./Post";
 import {getPosts} from "../../services/api/getInfo/getPostsInfo";
 
-export const Posts = () => {
+class Posts extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {posts:[]}
+    }
+    componentDidMount() {
+        getPosts.getAll().then(({data})=>this.setState({posts:[...data]}))
+    }
 
-    const [posts, setPosts] = useState([]);
-    useEffect(() => {
-        getPosts.getAll().then(({data}) => setPosts([...data]))
-    }, []);
+    render() {
+        return(
+            <div>
+                {this.state.posts.map(post=><Post key={post.id} post={post}/>)}
+            </div>
+        )
+    }
+}
 
-    return (
-        <div>
-            {posts.map(post=><Post key={post.id} post={post}/>)}
-
-        </div>
-    );
-};
+export {Posts}
