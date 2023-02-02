@@ -7,5 +7,4 @@ export const urls = {
     todos:'/todos',
     albums:'/albums',
     postId: ':postId',
-    postById: (id) => `/posts/${id}`,
 }

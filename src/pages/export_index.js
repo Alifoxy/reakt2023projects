@@ -1,5 +1,4 @@
 export * from './Comments/CommentsPage'
 export * from './Albums/AlbumsPage'
 export * from './NotFound/NotFoundPage'
-export * from './Todos/TodosPage'
-export * from './PostByComment/PostByCommentPage'
+export * from './Posts/PostsPage'

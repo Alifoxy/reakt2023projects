@@ -2,5 +2,6 @@ import {axiosRequest} from "../../../axios/axiosConfig";
 import { urls } from "../endpoints";
 
 export const getPosts = {
-    getPostById: (id) => axiosRequest.get(urls.postById(id))
+    getAll: () => axiosRequest.get(urls.posts),
+    addPost: (data) => axiosRequest.post(urls.posts, data)
 }
