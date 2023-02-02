@@ -53,5 +53,6 @@ button{
 }
 hr{
     border-color: goldenrod;
-    border-width:0 0 6px 0;
+    border-style: dashed;
+    border-width:0 0 8px 0;
 }
