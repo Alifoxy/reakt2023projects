@@ -15,7 +15,6 @@ const App = () => {
                     <Route path={RouterEndpoints.index} index element={<HomePage/>}/>
                     <Route path={RouterEndpoints.comments} element={<CommentsPage/>}/>
                     <Route path={RouterEndpoints.posts} element={<PostsPage/>}/>
-
                         <Route path={'*'} element={<NotFoundPage/>}/>
                 </Route>
             </Routes>

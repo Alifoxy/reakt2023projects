@@ -6,7 +6,7 @@ import {Posts} from "../../components/Posts/Posts";
 export const PostsPage = () => {
     return (
         <div>
-            <h2 className={'name_of_page'}>Comments</h2>
+            <h2 className={'name_of_page'}>Posts</h2>
             <Outlet />
             <Posts/>
 

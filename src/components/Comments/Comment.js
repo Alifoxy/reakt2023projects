@@ -1,9 +1,8 @@
 import React from 'react';
 import '../Add_style.css';
-import {useNavigate} from "react-router-dom";
+
 
 export const Comment = ({comment}) => {
-    const navigate = useNavigate();
     const {id, postId, name} = comment;
     return (
         <div className={'item2'}>
