@@ -1,14 +1,14 @@
 import React from 'react';
 import {Outlet} from "react-router-dom";
 import '../Add_style.css';
-import {Posts} from "../../components/Posts/Posts";
+import {RunPosts} from "../../components/Posts/RunPosts";
 
 const PostsPage = () => {
     return (
         <div>
             <h2 className={'name_of_page'}>Posts</h2>
             <Outlet />
-            <Posts/>
+            <RunPosts/>
 
         </div>
     );
