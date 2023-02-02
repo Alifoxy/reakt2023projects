@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import {Post} from "./Post";
 import {getPosts} from "../../services/api/getInfo/getPostsInfo";
 
-export const Posts = () => {
+export const Posts = ({id}) => {
 
     const [posts, setPosts] = useState([]);
     useEffect(() => {
-        getPosts.getAll().then(({data}) => setPosts([...data]))
-    }, []);
+        getPosts.getAll(id).then(({data}) => setPosts([...data]))
+    }, [id]);
 
     return (
         <div>
