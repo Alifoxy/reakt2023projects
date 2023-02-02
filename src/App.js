@@ -6,6 +6,7 @@ const App = () => {
     return (
         <div>
             <Comments/>
+            <hr/>
             <Posts/>
         </div>
     );
