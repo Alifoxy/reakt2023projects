@@ -1,16 +1,14 @@
 import React from 'react';
 import '../Add_style.css';
-import {useNavigate} from "react-router-dom";
 
-export const Post = ({comment}) => {
-    const navigate = useNavigate();
-    const {id, postId, name} = comment;
+export const Post = ({post}) => {
+    const {postId} = post;
     return (
         <div className={'item2'}>
-            <div>id:{id}</div>
-            <div>PostID:{postId}</div>
-            <div>name:{name}</div>
-            <button onClick={() => navigate(postId.toString())}>Get Post</button>
+            <div>PostID: {postId}</div>
+            <div>Title: {post.title}</div>
+            <div>Content: {post.body}</div>
+
         </div>
     );
 
