@@ -4,7 +4,4 @@ export const urls = {
     users: '/users',
     comments: 'post/1/comments',
     posts:'/posts/ID',
-    todos:'/todos',
-    albums:'/albums',
-    postId: ':postId',
 }
