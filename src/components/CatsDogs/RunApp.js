@@ -11,8 +11,7 @@ const reducer = (state, action) => {
         case 'ADD_CAT':
             const [lastCat] = state.cats.slice(-1);
             const catId = lastCat ? lastCat.id + 1 : 0;
-            const cat_name = action.payload1;
-            return {...state, cats: [...state.cats, {id: catId,name:cat_name, breed: action.payload2}]}
+            return {...state, cats: [...state.cats, {id: catId, name:action.payload1, breed: action.payload2}]}
         case 'REMOVE_CAT':
             const index = state.cats.findIndex(cat => cat.id === action.payload);
             state.cats.splice(index, 1)
@@ -20,8 +19,7 @@ const reducer = (state, action) => {
         case 'ADD_DOG':
             const [lastDog] = state.dogs.slice(-1);
             const dogId = lastDog ? lastDog.id + 1 : 0;
-            const dog_name = action.payload1;
-            return {...state, dogs: [...state.dogs, {id: dogId, name: dog_name, breed:action.payload2}]}
+            return {...state, dogs: [...state.dogs, {id: dogId, name:action.payload1, breed:action.payload2}]}
         case 'REMOVE_DOG':
             const indexDog = state.dogs.findIndex(dog => dog.id === action.payload);
             state.dogs.splice(indexDog, 1)
@@ -39,7 +37,7 @@ const RunApp = () => {
     const [state, dispatch] = useReducer(reducer, {cats:[], dogs:[]}, (data)=>data);
 
     const createCat = () => {
-        dispatch({type:'ADD_CAT', payload:catInp1.current.value, payload2:catInp2.current.value})
+        dispatch({type:'ADD_CAT', payload1:catInp1.current.value, payload2:catInp2.current.value})
         catInp1.current.value = ''
         catInp2.current.value = ''
     };
