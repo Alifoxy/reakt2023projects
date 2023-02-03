@@ -52,10 +52,10 @@ const RunApp = () => {
         dogInp2.current.value = ''
     };
 
-    const {register,handleSubmit, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(animalValidator)});
+
 
     const CatForm = () => {
-
+        const {register,handleSubmit, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(animalValidator)});
         return(
             <div>
                 <form onSubmit={handleSubmit(createCat)}>
@@ -71,7 +71,7 @@ const RunApp = () => {
     }
 
     const DogForm = () => {
-
+        const {register,handleSubmit, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(animalValidator)});
         return(
             <div>
                 <form onSubmit={handleSubmit(createDog)}>
