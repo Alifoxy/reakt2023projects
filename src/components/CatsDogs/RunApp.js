@@ -33,7 +33,7 @@ const reducer = (state, action) => {
 
 }
 const RunApp = () => {
-    const { handleSubmit, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(animalValidator)});
+    const { formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(animalValidator)});
     const catInp = useRef();
     const dogInp = useRef();
     const [state, dispatch] = useReducer(reducer, {cats:[], dogs:[]}, (data)=>data);
@@ -52,24 +52,20 @@ const RunApp = () => {
     return (
         <div>
             <div>
-                <form onSubmit={handleSubmit(createCat)}>
                     <input type="text" ref={catInp} placeholder="name"/>
                     {errors.cat_name&&<span>{errors.cat_name.message}</span>}
                     <input type="text" placeholder="breed"/>
                     {errors.cat_breed&&<span>{errors.cat_breed.message}</span>}
-                    <button disabled={!isValid} >Add new cat</button>
+                    <button disabled={!isValid} onClick={createCat} >Add new cat</button>
                     <Cats cats={state.cats} dispatch={dispatch}/>
-                </form>
             </div>
             <div>
-                <form onSubmit={handleSubmit(createDog)}>
                     <input type="text" ref={dogInp} placeholder="name"/>
                     {errors.dog_name&&<span>{errors.dog_name.message}</span>}
                     <input type="text" placeholder="breed"/>
                     {errors.dog_breed&&<span>{errors.dog_breed.message}</span>}
-                    <button disabled={!isValid}>Add new dog</button>
+                    <button disabled={!isValid} onClick={createDog}>Add new dog</button>
                     <Dogs dogs={state.dogs} dispatch={dispatch}/>
-                </form>
             </div>
 
         </div>
