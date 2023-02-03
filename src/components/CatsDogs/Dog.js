@@ -5,7 +5,9 @@ export const Dog = ({dog,dispatch}) => {
 
     return (
         <div>
-            {id}) {name} {breed}
+            <div>dogID:{id})</div>
+            <div>name:{name}</div>
+            <div>breed:{breed}</div>
             <button onClick={()=>dispatch({type:'REMOVE_DOG', payload:id})}>delete</button>
         </div>
     );
