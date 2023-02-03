@@ -52,8 +52,7 @@ const RunApp = () =>{
         dogInp2.current.value = ''
     };
 
-    const CatForm = () => {
-
+    const CatForm = (catInp1,catInp2) => {
         const {register,handleSubmit, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(catValidator)});
         return(
             <div>
