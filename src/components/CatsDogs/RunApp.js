@@ -33,7 +33,7 @@ const reducer = (state, action) => {
 
 }
 const RunApp = () => {
-    const { register, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(animalValidator)});
+    const { register, handleSubmit, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(animalValidator)});
     const catInp = useRef();
     const dogInp = useRef();
     const [state, dispatch] = useReducer(reducer, {cats:[], dogs:[]}, (data)=>data);
@@ -51,7 +51,7 @@ const RunApp = () => {
     return (
         <div>
             <div>
-                <form onSubmit={createCat}>
+                <form onSubmit={handleSubmit(createCat)}>
                     <input type="text" ref={catInp} placeholder="name" {...register('name')}/>
                     {errors.cat_name&&<span>{errors.cat_name.message}</span>}
                     <input type="text" placeholder="breed" {...register('breed')}/>
@@ -61,7 +61,7 @@ const RunApp = () => {
                 </form>;
             </div>
             <div>
-                <form onSubmit={createDog}>
+                <form onSubmit={handleSubmit(createDog)}>
                     <input type="text" ref={dogInp} placeholder="name" {...register('name')}/>
                     {errors.dog_name&&<span>{errors.dog_name.message}</span>}
                     <input type="text" placeholder="breed" {...register('breed')}/>
