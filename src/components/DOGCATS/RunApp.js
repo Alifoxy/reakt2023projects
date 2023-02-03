@@ -1,6 +1,5 @@
 import {Cats} from "./Cats";
 import {Dogs} from "./Dogs";
-import css from './App.module.css';
 import {useReducer, useRef} from "react";
 
 const reducer = (state, action) => {
@@ -42,7 +41,7 @@ const RunApp = () => {
     };
 
     return (
-        <div className={css.App}>
+        <div>
             <div>
                 <input type="text" ref={catInp}/>
                 <button onClick={createCat}>createCat</button>
