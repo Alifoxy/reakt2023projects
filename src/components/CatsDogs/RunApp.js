@@ -56,7 +56,7 @@ const RunApp = () => {
     return (
         <div>
             <div>
-                <form onSubmit={(createCat)}>
+                <form onClick={createCat}>
                     <input type="text" ref={catInp1} placeholder="name"/>
                     {errors.cat_name&&<span>{errors.cat_name.message}</span>}
                     <input type="text" ref={catInp2} placeholder="breed"/>
@@ -68,7 +68,7 @@ const RunApp = () => {
             </div>
 
             <div>
-                <form onSubmit={(createDog)}>
+                <form onClick={createDog}>
                     <input type="text" ref={dogInp1} placeholder="name"/>
                     {errors.dog_name&&<span>{errors.dog_name.message}</span>}
                     <input type="text" ref={dogInp2} placeholder="breed"/>
