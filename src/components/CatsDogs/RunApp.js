@@ -51,24 +51,35 @@ const RunApp = () => {
         dogInp2.current.value = ''
     };
 
-    const {formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(animalValidator)});
+    const {reset, handleSubmit,formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(animalValidator)});
+
+    const submit1 = () => {
+        createCat()
+        reset()
+    }
+
+    const submit2 = () => {
+        createDog()
+        reset()
+    }
+
 
     return (
         <div>
             <div>
-                <form>
+                <form onSubmit={handleSubmit(submit1)}>
                     <input type="text" ref={catInp1} placeholder="name"/>
                     {errors.cat_name&&<span>{errors.cat_name.message}</span>}
                     <input type="text" ref={catInp2} placeholder="breed"/>
                     {errors.cat_breed&&<span>{errors.cat_breed.message}</span>}
-                    <button onClick={createCat} disabled={!isValid} >Add new cat</button>
+                    <button disabled={!isValid} >Add new cat</button>
                     <Cats cats={state.cats} dispatch={dispatch}/>
                 </form>
 
             </div>
 
             <div>
-                <form onSubmit={createDog}>
+                <form onSubmit={handleSubmit(submit2)}>
                     <input type="text" ref={dogInp1} placeholder="name"/>
                     {errors.dog_name&&<span>{errors.dog_name.message}</span>}
                     <input type="text" ref={dogInp2} placeholder="breed"/>
