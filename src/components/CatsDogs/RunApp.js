@@ -52,26 +52,17 @@ const RunApp = () => {
         dogInp2.current.value = ''
     };
 
-    const {reset, handleSubmit, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(animalValidator)});
+    const {register, handleSubmit, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(animalValidator)});
 
-    const submit1 = () => {
-        createCat.then(({data}) => ((prevState) => [...prevState, data]))
-        reset()
-    }
-
-    const submit2 = () => {
-        createDog.then(({data}) => ((prevState) => [...prevState, data]))
-        reset()
-    }
 
 
     return (
         <div>
             <div>
-                <form onSubmit={handleSubmit(submit1)}>
-                    <input type="text" ref={catInp1} placeholder="name"/>
+                <form onSubmit={handleSubmit(createCat)}>
+                    <input type="text" ref={catInp1} placeholder="name" {...register('name')}/>
                     {errors.cat_name&&<span>{errors.cat_name.message}</span>}
-                    <input type="text" ref={catInp2} placeholder="breed"/>
+                    <input type="text" ref={catInp2} placeholder="breed" {...register('cat_breed')}/>
                     {errors.cat_breed&&<span>{errors.cat_breed.message}</span>}
                     <button disabled={!isValid} >Add new cat</button>
                     <Cats cats={state.cats} dispatch={dispatch}/>
@@ -80,10 +71,10 @@ const RunApp = () => {
             </div>
 
             <div>
-                <form onSubmit={handleSubmit(submit2)}>
-                    <input type="text" ref={dogInp1} placeholder="name"/>
+                <form onSubmit={handleSubmit(createDog)}>
+                    <input type="text" ref={dogInp1} placeholder="name" {...register('name')}/>
                     {errors.dog_name&&<span>{errors.dog_name.message}</span>}
-                    <input type="text" ref={dogInp2} placeholder="breed"/>
+                    <input type="text" ref={dogInp2} placeholder="breed" {...register('dog_breed')}/>
                     {errors.dog_breed&&<span>{errors.dog_breed.message}</span>}
                     <button disabled={!isValid}>Add new dog</button>
                     <Dogs dogs={state.dogs} dispatch={dispatch}/>
