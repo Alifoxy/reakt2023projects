@@ -1,11 +1,11 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import {joiResolver} from "@hookform/resolvers/joi";
-import {catValidator} from "../../validators/catValidator";
 import {useReducer, useRef} from "react";
+
 import {Cats} from "./Animals";
 import {Dogs} from "./Animals";
-import {dogValidator} from "../../validators/dogValidator";
+import {animalValidator} from "../../validators/animalValidator";
 
 
 
@@ -33,7 +33,7 @@ const reducer = (state, action) => {
 
 }
 const RunApp = () => {
-    const { register, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(catValidator,dogValidator)});
+    const { register, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(animalValidator)});
     const catInp = useRef();
     const dogInp = useRef();
     const [state, dispatch] = useReducer(reducer, {cats:[], dogs:[]}, (data)=>data);
