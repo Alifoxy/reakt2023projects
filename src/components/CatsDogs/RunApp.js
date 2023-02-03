@@ -34,27 +34,19 @@ const reducer = (state, action) => {
 }
 
 const RunApp = () => {
-    const catInp1 = useRef();
-    const catInp2 = useRef();
-    const dogInp1 = useRef();
-    const dogInp2 = useRef();
+
     const [state, dispatch] = useReducer(reducer, {cats:[], dogs:[]}, (data)=>data);
 
-    const createCat = () => {
-        dispatch({type:'ADD_CAT', payload1:catInp1.current.value, payload2:catInp2.current.value})
-        catInp1.current.value = ''
-        catInp2.current.value = ''
-    };
-
-    const createDog = () => {
-        dispatch({type:'ADD_DOG', payload1:dogInp1.current.value, payload2:dogInp2.current.value})
-        dogInp1.current.value = ''
-        dogInp2.current.value = ''
-    };
-
-
-
     const CatForm = () => {
+        const catInp1 = useRef();
+        const catInp2 = useRef();
+
+        const createCat = () => {
+            dispatch({type:'ADD_CAT', payload1:catInp1.current.value, payload2:catInp2.current.value})
+            catInp1.current.value = ''
+            catInp2.current.value = ''
+        };
+
         const {register,handleSubmit, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(animalValidator)});
         return(
             <div>
@@ -71,6 +63,15 @@ const RunApp = () => {
     }
 
     const DogForm = () => {
+        const dogInp1 = useRef();
+        const dogInp2 = useRef();
+
+        const createDog = () => {
+            dispatch({type:'ADD_DOG', payload1:dogInp1.current.value, payload2:dogInp2.current.value})
+            dogInp1.current.value = ''
+            dogInp2.current.value = ''
+        };
+
         const {register,handleSubmit, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(animalValidator)});
         return(
             <div>
