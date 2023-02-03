@@ -1,10 +1,11 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import {joiResolver} from "@hookform/resolvers/joi";
-import {animalValidator} from "../../validators/animalValidator";
+import {catValidator} from "../../validators/catValidator";
 import {useReducer, useRef} from "react";
 import {Cats} from "./Animals";
 import {Dogs} from "./Animals";
+import {dogValidator} from "../../validators/dogValidator";
 
 
 
@@ -32,7 +33,7 @@ const reducer = (state, action) => {
 
 }
 const RunApp = () => {
-    const { register, handleSubmit, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(animalValidator)});
+    const { register, handleSubmit, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(catValidator,dogValidator)});
     const catInp = useRef();
     const dogInp = useRef();
     const [state, dispatch] = useReducer(reducer, {cats:[], dogs:[]}, (data)=>data);
@@ -49,22 +50,27 @@ const RunApp = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit(createCat)}>
-                <input type="text" ref={catInp} placeholder="name" {...register('name')}/>
-                {errors.cat_name&&<span>{errors.cat_name.message}</span>}
-                <input type="text" placeholder="breed" {...register('breed')}/>
-                {errors.cat_breed&&<span>{errors.cat_breed.message}</span>}
-                <button disabled={!isValid}>Add new cat</button>
-                <Cats cats={state.cats} dispatch={dispatch}/>
-            </form>;
-            <form onSubmit={handleSubmit(createDog)}>
-                <input type="text" ref={dogInp} placeholder="name" {...register('name')}/>
-                {errors.dog_name&&<span>{errors.dog_name.message}</span>}
-                <input type="text" placeholder="breed" {...register('breed')}/>
-                {errors.dog_breed&&<span>{errors.dog_breed.message}</span>}
-                <button disabled={!isValid}>Add new dog</button>
-                <Dogs dogs={state.dogs} dispatch={dispatch}/>
-            </form>;
+            <div>
+                <form onSubmit={handleSubmit(createCat)}>
+                    <input type="text" ref={catInp} placeholder="name" {...register('name')}/>
+                    {errors.cat_name&&<span>{errors.cat_name.message}</span>}
+                    <input type="text" placeholder="breed" {...register('breed')}/>
+                    {errors.cat_breed&&<span>{errors.cat_breed.message}</span>}
+                    <button disabled={!isValid}>Add new cat</button>
+                    <Cats cats={state.cats} dispatch={dispatch}/>
+                </form>;
+            </div>
+            <div>
+                <form onSubmit={handleSubmit(createDog)}>
+                    <input type="text" ref={dogInp} placeholder="name" {...register('name')}/>
+                    {errors.dog_name&&<span>{errors.dog_name.message}</span>}
+                    <input type="text" placeholder="breed" {...register('breed')}/>
+                    {errors.dog_breed&&<span>{errors.dog_breed.message}</span>}
+                    <button disabled={!isValid}>Add new dog</button>
+                    <Dogs dogs={state.dogs} dispatch={dispatch}/>
+                </form>;
+            </div>
+
         </div>
     );
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Comments} from './components/Comments/Comments'
 import {Posts} from "./components/Posts/Posts";
-import {RunApp} from "./components/DOGCATS/RunApp";
+import {RunApp} from "./components/CatsDogs/RunApp";
 
 const App = () => {
     return (
