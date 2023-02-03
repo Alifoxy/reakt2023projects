@@ -56,12 +56,12 @@ const RunApp = () => {
     return (
         <div>
             <div>
-                <form onInput={createCat}>
+                <form>
                     <input type="text" ref={catInp1} placeholder="name"/>
                     {errors.cat_name&&<span>{errors.cat_name.message}</span>}
                     <input type="text" ref={catInp2} placeholder="breed"/>
                     {errors.cat_breed&&<span>{errors.cat_breed.message}</span>}
-                    <button disabled={!isValid} >Add new cat</button>
+                    <button onClick={createCat} disabled={!isValid} >Add new cat</button>
                     <Cats cats={state.cats} dispatch={dispatch}/>
                 </form>
 
