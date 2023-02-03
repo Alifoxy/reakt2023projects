@@ -5,7 +5,8 @@ import { useForm } from "react-hook-form";
 
 import {Cats} from "./Animals";
 import {Dogs} from "./Animals";
-import {animalValidator} from "../../validators/animalValidator";
+import {catValidator} from "../../validators/catValidator";
+import {dogValidator} from "../../validators/dogValidator";
 
 
 
@@ -43,7 +44,7 @@ const reducer = (state, action) => {
             catInp2.current.value = ''
         };
 
-        const {register,handleSubmit, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(animalValidator)});
+        const {register,handleSubmit, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(catValidator)});
         return(
             <div>
                 <form onSubmit={handleSubmit(createCat)}>
@@ -69,7 +70,7 @@ const reducer = (state, action) => {
             dogInp2.current.value = ''
         };
 
-        const {register,handleSubmit, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(animalValidator)});
+        const {register,handleSubmit, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(dogValidator)});
         return(
             <div>
                 <form onSubmit={handleSubmit(createDog)}>
