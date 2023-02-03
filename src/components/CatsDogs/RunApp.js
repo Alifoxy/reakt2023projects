@@ -48,12 +48,11 @@ const RunApp = () =>{
 
     const createDog = () => {
         dispatch({type:'ADD_DOG', payload1:dogInp1.current.value, payload2:dogInp2.current.value})
-        dogInp1.current.value = 'value'
-        dogInp2.current.value = 'value'
+        dogInp1.current.value = ''
+        dogInp2.current.value = ''
     };
-
+    const {register,handleSubmit, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(catValidator)});
     const CatForm = () => {
-        const {register,handleSubmit, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(catValidator)});
         return(
             <div>
                 <form onSubmit={handleSubmit(createCat)}>
