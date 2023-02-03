@@ -3,7 +3,7 @@ export const Cat = ({cat,dispatch}) => {
 
     return (
         <div>
-            <div>catID:{id})</div>
+            <div>catID:{id}</div>
             <div>name:{name}</div>
             <div>breed:{breed}</div>
             <button onClick={()=>dispatch({type:'REMOVE_CAT', payload:id})}>delete</button>

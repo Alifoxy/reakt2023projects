@@ -1,8 +1,11 @@
 import React from 'react';
 import {useReducer, useRef} from "react";
+import {joiResolver} from "@hookform/resolvers/joi";
+import { useForm } from "react-hook-form";
 
 import {Cats} from "./Animals";
 import {Dogs} from "./Animals";
+import {animalValidator} from "../../validators/animalValidator";
 
 
 
@@ -48,20 +51,31 @@ const RunApp = () => {
         dogInp2.current.value = ''
     };
 
+    const {handleSubmit,  formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(animalValidator)});
 
     return (
         <div>
             <div>
+                <form onSubmit={handleSubmit(createCat)}>
                     <input type="text" ref={catInp1} placeholder="name"/>
+                    {errors.cat_name&&<span>{errors.cat_name.message}</span>}
                     <input type="text" ref={catInp2} placeholder="breed"/>
-                    <button onClick={createCat} >Add new cat</button>
+                    {errors.cat_breed&&<span>{errors.cat_breed.message}</span>}
+                    <button disabled={!isValid} >Add new cat</button>
                     <Cats cats={state.cats} dispatch={dispatch}/>
+                </form>
+
             </div>
+
             <div>
+                <form onSubmit={handleSubmit(createDog)}>
                     <input type="text" ref={dogInp1} placeholder="name"/>
+                    {errors.dog_name&&<span>{errors.dog_name.message}</span>}
                     <input type="text" ref={dogInp2} placeholder="breed"/>
-                    <button onClick={createDog}>Add new dog</button>
+                    {errors.dog_breed&&<span>{errors.dog_breed.message}</span>}
+                    <button disabled={!isValid}>Add new dog</button>
                     <Dogs dogs={state.dogs} dispatch={dispatch}/>
+                   </form>
             </div>
 
         </div>
