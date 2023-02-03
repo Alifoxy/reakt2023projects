@@ -14,7 +14,7 @@ const reducer = (state, action) => {
         case 'ADD_CAT':
             const [lastCat] = state.cats.slice(-1);
             const catId = lastCat ? lastCat.id + 1 : 0;
-            const cat_name = action.payload;
+            const cat_name = action.name;
             return {...state, cats: [...state.cats, {id: catId, name:cat_name, breed: action.payload}]}
         case 'REMOVE_CAT':
             const index = state.cats.findIndex(cat => cat.id === action.payload);
@@ -23,7 +23,7 @@ const reducer = (state, action) => {
         case 'ADD_DOG':
             const [lastDog] = state.dogs.slice(-1);
             const dogId = lastDog ? lastDog.id + 1 : 0;
-            const dog_name = action.payload;
+            const dog_name = action.name;
             return {...state, dogs: [...state.dogs, {id: dogId, name: dog_name, breed:action.payload,}]}
         case 'REMOVE_DOG':
             const indexDog = state.dogs.findIndex(dog => dog.id === action.payload);
