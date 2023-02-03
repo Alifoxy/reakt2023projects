@@ -5,7 +5,7 @@ import {AnimForm} from "./AddAnimal";
 import {Dogs} from "./Animals";
 import {Cats} from "./Animals";
 
-export const App = () => {
+export const RunApp = () => {
     const [setCats] = useState([]);
     const [setDogs] = useState([]);
 
