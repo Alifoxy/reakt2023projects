@@ -15,7 +15,7 @@ const reducer = (state, action) => {
             const [lastCat] = state.cats.slice(-1);
             const catId = lastCat ? lastCat.id + 1 : 0;
             const cat_name = action.payload;
-            return {...state, cats: [...state.cats, {id: catId},{name:cat_name}, {breed: action.payload}]}
+            return {...state, cats: [...state.cats, {id: catId,name:cat_name, breed: action.payload}]}
         case 'REMOVE_CAT':
             const index = state.cats.findIndex(cat => cat.id === action.payload);
             state.cats.splice(index, 1)
@@ -24,7 +24,7 @@ const reducer = (state, action) => {
             const [lastDog] = state.dogs.slice(-1);
             const dogId = lastDog ? lastDog.id + 1 : 0;
             const dog_name = action.payload;
-            return {...state, dogs: [...state.dogs, {id: dogId}, {name: dog_name}, {breed:action.payload}]}
+            return {...state, dogs: [...state.dogs, {id: dogId, name: dog_name, breed:action.payload}]}
         case 'REMOVE_DOG':
             const indexDog = state.dogs.findIndex(dog => dog.id === action.payload);
             state.dogs.splice(indexDog, 1)
@@ -56,7 +56,7 @@ const RunApp = () => {
             <div>
                     <input type="text" ref={catInp} placeholder="name"/>
                     {errors.cat_name&&<span>{errors.cat_name.message}</span>}
-                    <input type="text" placeholder="breed"/>
+                    <input type="text" ref={catInp} placeholder="breed"/>
                     {errors.cat_breed&&<span>{errors.cat_breed.message}</span>}
                     <button onClick={createCat} >Add new cat</button>
                     <Cats cats={state.cats} dispatch={dispatch}/>
@@ -64,7 +64,7 @@ const RunApp = () => {
             <div>
                     <input type="text" ref={dogInp} placeholder="name"/>
                     {errors.dog_name&&<span>{errors.dog_name.message}</span>}
-                    <input type="text" placeholder="breed"/>
+                    <input type="text" ref={catInp} placeholder="breed"/>
                     {errors.dog_breed&&<span>{errors.dog_breed.message}</span>}
                     <button onClick={createDog}>Add new dog</button>
                     <Dogs dogs={state.dogs} dispatch={dispatch}/>
