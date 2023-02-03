@@ -60,7 +60,7 @@ const RunApp = () => {
         <div>
             <div>
                 <form onSubmit={handleSubmit(createCat)}>
-                    <input type="text" ref={catInp1} placeholder="name" {...register('name')}/>
+                    <input type="text" ref={catInp1} placeholder="name" {...register('cat_name')}/>
                     {errors.cat_name&&<span>{errors.cat_name.message}</span>}
                     <input type="text" ref={catInp2} placeholder="breed" {...register('cat_breed')}/>
                     {errors.cat_breed&&<span>{errors.cat_breed.message}</span>}
@@ -72,7 +72,7 @@ const RunApp = () => {
 
             <div>
                 <form onSubmit={handleSubmit(createDog)}>
-                    <input type="text" ref={dogInp1} placeholder="name" {...register('name')}/>
+                    <input type="text" ref={dogInp1} placeholder="name" {...register('dog_name')}/>
                     {errors.dog_name&&<span>{errors.dog_name.message}</span>}
                     <input type="text" ref={dogInp2} placeholder="breed" {...register('dog_breed')}/>
                     {errors.dog_breed&&<span>{errors.dog_breed.message}</span>}
