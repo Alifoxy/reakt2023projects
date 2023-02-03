@@ -52,38 +52,50 @@ const RunApp = () => {
         dogInp2.current.value = ''
     };
 
-    const {register, formState:{errors}} = useForm({mode: 'all',resolver:joiResolver(animalValidator)});
+    const {register,handleSubmit, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(animalValidator)});
 
+    const CatForm = () => {
 
-
-    return (
-        <div>
+        return(
             <div>
-                <form>
+                <form onSubmit={handleSubmit(createCat)}>
                     <input type="text" ref={catInp1} placeholder="name" {...register('cat_name')}/>
                     {errors.cat_name&&<span>{errors.cat_name.message}</span>}
                     <input type="text" ref={catInp2} placeholder="breed" {...register('cat_breed')}/>
                     {errors.cat_breed&&<span>{errors.cat_breed.message}</span>}
-                    <button onClick={createCat}>Add new cat</button>
+                    <button disabled={!isValid}>Add new cat</button>
                     <Cats cats={state.cats} dispatch={dispatch}/>
                 </form>
-
             </div>
+        )
+    }
 
+    const DogForm = () => {
+
+        return(
             <div>
-                <form>
+                <form onSubmit={handleSubmit(createDog)}>
                     <input type="text" ref={dogInp1} placeholder="name" {...register('dog_name')}/>
                     {errors.dog_name&&<span>{errors.dog_name.message}</span>}
                     <input type="text" ref={dogInp2} placeholder="breed" {...register('dog_breed')}/>
                     {errors.dog_breed&&<span>{errors.dog_breed.message}</span>}
-                    <button onClick={createDog}>Add new dog</button>
+                    <button disabled={!isValid}>Add new dog</button>
                     <Dogs dogs={state.dogs} dispatch={dispatch}/>
                 </form>
             </div>
+        )
+    }
 
-        </div>
-    );
+   return (
+       <div>
+           <div><CatForm/></div>
+           <div><DogForm/></div>
+       </div>
 
+   )
+};
+
+export {RunApp};
     // return (
     //     <div>
     //         <div>
@@ -98,9 +110,7 @@ const RunApp = () => {
     //         </div>
     //     </div>
     // );
-};
 
-export {RunApp};
 
 
 
