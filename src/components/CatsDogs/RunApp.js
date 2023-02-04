@@ -1,12 +1,12 @@
 import React from 'react';
 import {useReducer, useRef} from "react";
-import {joiResolver} from "@hookform/resolvers/joi";
-import { useForm } from "react-hook-form";
+// import {joiResolver} from "@hookform/resolvers/joi";
+// import { useForm } from "react-hook-form";
 
 import {Cats} from "./Animals";
 import {Dogs} from "./Animals";
-import {catValidator} from "../../validators/catValidator";
-import {dogValidator} from "../../validators/dogValidator";
+// import {catValidator} from "../../validators/catValidator";
+// import {dogValidator} from "../../validators/dogValidator";
 
 
 
@@ -52,70 +52,71 @@ const RunApp = () =>{
         dogInp2.current.value = ''
     };
 
-    const submit1 = async () => {
-        await createCat.then.payload1(({data}) => Cats((prevState) => [...prevState, data]))
-    }
-    // return(
-    //     <div>
-    //         <div>
-    //             <form>
-    //                 <input type="text" ref={catInp1} placeholder="name" />
-    //                 <input type="text" ref={catInp2} placeholder="breed" />
-    //                 <button onClick={createCat}>Add new cat</button>
-    //                 <Cats cats={state.cats} dispatch={dispatch}/>
-    //             </form>
-    //         </div>
-    //             <form>
-    //                 <input type="text" ref={dogInp1} placeholder="name" />
-    //                 <input type="text" ref={dogInp2} placeholder="breed"/>
-    //                 <button onClick={createDog}>Add new dog</button>
-    //                 <Dogs dogs={state.dogs} dispatch={dispatch}/>
-    //             </form>
-    //         <div>
-    //
-    //         </div>
-    //     </div>
-    // )
-
-    const CatForm = () => {
-        const {register,handleSubmit, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(catValidator)});
-        return(
+    return(
+        <div>
             <div>
-                <form onSubmit={handleSubmit(submit1)}>
+                <form>
+                    <input type="text" ref={catInp1} placeholder="name" />
+                    <input type="text" ref={catInp2} placeholder="breed" />
+                    <button onClick={createCat}>Add new cat</button>
                     <Cats cats={state.cats} dispatch={dispatch}/>
-                    <input type="text" ref={catInp1} placeholder="name" {...register('cat_name')}/>
-                    {errors.cat_name&&<span>{errors.cat_name.message}</span>}
-                    <input type="text" ref={catInp2} placeholder="breed" {...register('cat_breed')}/>
-                    {errors.cat_breed&&<span>{errors.cat_breed.message}</span>}
-                    <button disabled={!isValid}>Add new cat</button>
-
                 </form>
             </div>
-        )
-    }
-
-    const DogForm = () => {
-        const {register,handleSubmit, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(dogValidator)});
-        return(
-            <div>
-                <form onSubmit={handleSubmit(createDog)}>
+                <form>
+                    <input type="text" ref={dogInp1} placeholder="name" />
+                    <input type="text" ref={dogInp2} placeholder="breed"/>
+                    <button onClick={createDog}>Add new dog</button>
                     <Dogs dogs={state.dogs} dispatch={dispatch}/>
-                    <input type="text" ref={dogInp1} placeholder="name" {...register('dog_name')}/>
-                    {errors.dog_name&&<span>{errors.dog_name.message}</span>}
-                    <input type="text" ref={dogInp2} placeholder="breed" {...register('dog_breed')}/>
-                    {errors.dog_breed&&<span>{errors.dog_breed.message}</span>}
-                    <button disabled={!isValid}>Add new dog</button>
-
                 </form>
-            </div>
-        )
-    }
-        return(
             <div>
-                <div><CatForm/></div>
-                <div><DogForm/></div>
+
             </div>
-        )
+        </div>
+    )
+
+//  -----------------------------------Варіант з валідатором----------------------------------------------
+
+    // const CatForm = () => {
+    //     const {register,handleSubmit, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(catValidator)});
+    //     return(
+    //         <div>
+    //             <form onSubmit={handleSubmit(createCat)}>
+    //                 <Cats cats={state.cats} dispatch={dispatch}/>
+    //                 <input type="text" ref={catInp1} placeholder="name" {...register('cat_name')}/>
+    //                 {errors.cat_name&&<span>{errors.cat_name.message}</span>}
+    //                 <input type="text" ref={catInp2} placeholder="breed" {...register('cat_breed')}/>
+    //                 {errors.cat_breed&&<span>{errors.cat_breed.message}</span>}
+    //                 <button disabled={!isValid}>Add new cat</button>
+    //
+    //             </form>
+    //         </div>
+    //     )
+    // }
+    //
+    // const DogForm = () => {
+    //     const {register,handleSubmit, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(dogValidator)});
+    //     return(
+    //         <div>
+    //             <form onSubmit={handleSubmit(createDog)}>
+    //                 <Dogs dogs={state.dogs} dispatch={dispatch}/>
+    //                 <input type="text" ref={dogInp1} placeholder="name" {...register('dog_name')}/>
+    //                 {errors.dog_name&&<span>{errors.dog_name.message}</span>}
+    //                 <input type="text" ref={dogInp2} placeholder="breed" {...register('dog_breed')}/>
+    //                 {errors.dog_breed&&<span>{errors.dog_breed.message}</span>}
+    //                 <button disabled={!isValid}>Add new dog</button>
+    //
+    //             </form>
+    //         </div>
+    //     )
+    // }
+    //     return(
+    //         <div>
+    //             <div><CatForm/></div>
+    //             <div><DogForm/></div>
+    //         </div>
+    //     )
+
+// ---------------------------------------------------------------------------------------------------------
     };
 export {RunApp}
 
