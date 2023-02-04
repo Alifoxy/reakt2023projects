@@ -55,19 +55,15 @@ const RunApp = () =>{
     return(
         <div>
             <div>
-                <form>
                     <input type="text" ref={catInp1} placeholder="name" />
                     <input type="text" ref={catInp2} placeholder="breed" />
                     <button onClick={createCat}>Add new cat</button>
                     <Cats cats={state.cats} dispatch={dispatch}/>
-                </form>
             </div>
-                <form>
                     <input type="text" ref={dogInp1} placeholder="name" />
                     <input type="text" ref={dogInp2} placeholder="breed"/>
                     <button onClick={createDog}>Add new dog</button>
                     <Dogs dogs={state.dogs} dispatch={dispatch}/>
-                </form>
             <div>
 
             </div>
