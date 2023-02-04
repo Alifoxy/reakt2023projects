@@ -53,7 +53,7 @@ const RunApp = () =>{
     };
 
     const submit1 = async () => {
-        await createCat.then(({data}) => Cats((prevState) => [...prevState, data]))
+        await createCat(({data}) => Cats((prevState) => [...prevState, data]))
     }
     // return(
     //     <div>
