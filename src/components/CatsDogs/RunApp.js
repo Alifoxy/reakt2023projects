@@ -40,17 +40,21 @@ const RunApp = () =>{
     const dogInp2 = useRef();
 
 
-    const createCat = async () => {
-        await dispatch({type:'ADD_CAT', payload1:catInp1.current.value, payload2:catInp2.current.value})
+    const createCat = () => {
+        dispatch({type:'ADD_CAT', payload1:catInp1.current.value, payload2:catInp2.current.value})
         catInp1.current.value = ''
         catInp2.current.value = ''
     };
 
-    const createDog = async() => {
-        await dispatch({type:'ADD_DOG', payload1:dogInp1.current.value, payload2:dogInp2.current.value})
+    const createDog = () => {
+        dispatch({type:'ADD_DOG', payload1:dogInp1.current.value, payload2:dogInp2.current.value})
         dogInp1.current.value = ''
         dogInp2.current.value = ''
     };
+
+    const submit1 = async () => {
+        await createCat.then(({data}) => Cats((prevState) => [...prevState, data]))
+    }
     // return(
     //     <div>
     //         <div>
@@ -77,7 +81,7 @@ const RunApp = () =>{
         const {register,handleSubmit, formState:{errors,isValid}} = useForm({mode: 'all',resolver:joiResolver(catValidator)});
         return(
             <div>
-                <form onSubmit={handleSubmit(createCat)}>
+                <form onSubmit={handleSubmit(submit1)}>
                     <Cats cats={state.cats} dispatch={dispatch}/>
                     <input type="text" ref={catInp1} placeholder="name" {...register('cat_name')}/>
                     {errors.cat_name&&<span>{errors.cat_name.message}</span>}
