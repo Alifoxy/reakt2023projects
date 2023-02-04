@@ -1,5 +1,5 @@
-import {Cat} from './Cat';
-import {Dog} from './Dog';
+import {Cat} from './Animal';
+import {Dog} from './Animal';
 
 export const Cats = ({cats,dispatch}) => {
     return (
