@@ -1,12 +1,9 @@
 import React from 'react';
-import {Component} from "react";
 
 import '../Add_style.css';
 
-class Post extends Component {
-
-    render() {
-        const {id, userId, title, body} = this.props.post;
+const Post = ({post}) =>{
+        const {id, userId, title, body} = post
         return (
             <div className={'item1'}>
                 <div>id: {id}</div>
@@ -16,7 +13,7 @@ class Post extends Component {
             </div>
         )
     }
-}
+
 
 export {Post}
 

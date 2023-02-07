@@ -1,15 +1,13 @@
 import React from 'react';
-import {Comments} from './components/Comments/Comments'
+import {Users} from './components/Users/Users';
 import {Posts} from "./components/Posts/Posts";
-import {RunApp} from "./components/CatsDogs/RunApp";
 
 const App = () => {
     return (
         <div>
-            <RunApp/>
             <hr/>
-            <div><h2>Comments</h2></div>
-            <Comments/>
+            <div><h2>Users</h2></div>
+            <Users/>
             <hr/>
             <div><h2>Posts</h2></div>
             <Posts/>

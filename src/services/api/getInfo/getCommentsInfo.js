@@ -1,4 +1,4 @@
-import {axiosRequest} from "../../../axios/axiosConfig";
+import {axiosRequest} from "../../axios/axiosConfig";
 import {urls} from "../endpoints";
 
 export const getComments = {
