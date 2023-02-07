@@ -1,7 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
-        users:[],
+        posts:[],
         errors:null,
         loading:null
 };
@@ -11,7 +11,7 @@ const postSlice = createSlice({
         initialState,
         reducers:{
                getAll:(state,action)=>{
-                 state.users = action.payload
+                 state.posts = action.payload
                 }
         }
 });

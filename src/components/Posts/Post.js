@@ -5,7 +5,7 @@ import '../Add_style.css';
 const Post = ({post}) =>{
         const {id, userId, title, body} = post
         return (
-            <div className={'item1'}>
+            <div className={'item2'}>
                 <div>id: {id}</div>
                 <div>userId: {userId}</div>
                 <div>title: {title}</div>
