@@ -1,5 +1,4 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {getUsers} from "../../services/api/getInfo/getUsersInfo";
 import {getPosts} from "../../services/api/getInfo/getPostsInfo";
 
 const initialState = {
@@ -26,7 +25,7 @@ const getById = createAsyncThunk(
     "postSlice/getById",
     async ({id},{rejectWithValue})=>{
         try{
-            const {data} = await getUsers.getById(id);
+            const {data} = await getPosts.getById(id);
             return data
         }catch (error){
             rejectWithValue(error.response.data);

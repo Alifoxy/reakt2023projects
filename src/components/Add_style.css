@@ -42,6 +42,7 @@
     font-size: x-large;
 }
 button{
+    margin: 5px;
     border-radius: 10px;
     background-color: lightgoldenrodyellow;
     width: 300px;
