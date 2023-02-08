@@ -1,6 +1,5 @@
 import '../Add_style.css';
-
-import React from 'react';
+import {userActions} from "../../redux/slices/user_slice";
 import {useDispatch} from "react-redux";
 
 const User = ({user}) => {
@@ -11,7 +10,7 @@ const User = ({user}) => {
             <div>id: {id}</div>
             <div>name: {name}</div>
             <div>username: {username}</div>
-            <button>select</button>
+            <button onClick={()=>dispatch(userActions.set_selectedUser(user))}>select</button>
         </div>
     );
 };
