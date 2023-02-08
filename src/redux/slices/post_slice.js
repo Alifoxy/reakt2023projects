@@ -1,4 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+
 import {getPosts} from "../../services/api/getInfo/getPostsInfo";
 
 const initialState = {

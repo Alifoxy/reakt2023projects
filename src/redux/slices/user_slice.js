@@ -1,4 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+
 import {getUsers} from "../../services/api/getInfo/getUsersInfo";
 
 
