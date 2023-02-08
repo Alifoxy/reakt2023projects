@@ -1,4 +1,6 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {getUsers} from "../../services/api/getInfo/getUsersInfo";
+
 
 const initialState = {
         users:[],
@@ -7,19 +9,60 @@ const initialState = {
         selectedUser:null
 };
 
-const userSlice = createSlice({name:"userSlice",
+const getAll = createAsyncThunk(
+    "userSlice/getAll",
+    async (_,{rejectWithValue})=>{
+        try{
+                const {data} = await getUsers.getAll();
+                return data
+        }catch (error){
+                rejectWithValue(error.response.data);
+        }
+
+    }
+);
+
+const getById = createAsyncThunk(
+    "userSlice/getById",
+    async ({id},{rejectWithValue})=>{
+            try{
+                    const {data} = await getUsers.getById(id);
+                    return data
+            }catch (error){
+                    rejectWithValue(error.response.data);
+            }
+
+    }
+);
+
+const userSlice = createSlice({
+        name:"userSlice",
         initialState,
         reducers:{
-                getAll:(state,action)=>{
-                        state.users=action.payload
-                },
                 set_selectedUser:(state,action)=>{
                         state.selectedUser=action.payload
-
                 }
-        }});
-const {reducer:userReducer,actions:{getAll,set_selectedUser}}= userSlice;
+        },
+        extraReducers:{
+                [getAll.fulfilled]:(state,action)=>{
+                        state.loading=false
+                        state.users=action.payload
+                },
+                [getAll.rejected]:(state,action)=>{
+                        state.loading=false
+                        state.errors=action.payload
+                },
+                [getAll.pending]:(state)=>{
+                        state.loading=true
+                },
+                [getById.fulfilled]:(state,action)=>{
+                        state.selectedUser=action.payload
+                }
+        }
+});
 
-const userActions = {getAll,set_selectedUser};
+const {reducer:userReducer,actions:{set_selectedUser}}= userSlice;
 
-export{userReducer,userActions};
+const userActions = {getAll,set_selectedUser,getById};
+
+export{userReducer,userActions,userSlice};

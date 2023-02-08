@@ -11,6 +11,7 @@ const User = ({user}) => {
             <div>name: {name}</div>
             <div>username: {username}</div>
             <button onClick={()=>dispatch(userActions.set_selectedUser(user))}>select</button>
+            <button onClick={()=>dispatch(userActions.getById({id}))}>api select</button>
         </div>
     );
 };
