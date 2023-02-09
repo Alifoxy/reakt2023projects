@@ -1,8 +1,9 @@
-import {baseURL} from "../endpoints";
 import {urls} from "../endpoints";
 import {axiosRequest} from "../../axios/axiosConfig";
 
-export const getPosts = {
+export const getCars = {
     getAll: () => axiosRequest.get(urls.cars),
-    getById: (id) => axiosRequest.get(`${urls.cars}/${id}`),
+    create: (data) => axiosRequest.post(urls.cars.cars, data),
+    updateById: (id, data) => axiosRequest.put(urls.cars.byId(id), data),
+    deleteById: (id) => axiosRequest.delete(urls.cars.byId(id))
 }
