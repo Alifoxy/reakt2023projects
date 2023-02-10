@@ -33,7 +33,7 @@ const create = createAsyncThunk(
         }
 
     }
-)
+);
 
 const deleteById = createAsyncThunk(
     'carSlice/deleteById',
@@ -45,7 +45,7 @@ const deleteById = createAsyncThunk(
             return thunkAPI.rejectWithValue(e.response.data)
         }
     }
-)
+);
 
 const updateById = createAsyncThunk(
     'carSlice/updateById',
@@ -58,7 +58,8 @@ const updateById = createAsyncThunk(
 
         }
     }
-)
+);
+
 const carSlice = createSlice({
     name: "carSlice",
     initialState,
@@ -82,8 +83,6 @@ const carSlice = createSlice({
 
     }
 });
-
-
 
 
 const {reducer:carReducer,actions:{set_updateCar}}= carSlice;
