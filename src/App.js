@@ -1,19 +1,14 @@
 import React from 'react';
-import {Users} from './components/Users/Users';
-import {Posts} from "./components/Posts/Posts";
-import {Header} from "./components/Header/Header";
+
+import {Cars} from './components/Cars/Cars';
 
 const App = () => {
     return (
         <div>
             <div><h2>Header</h2></div>
-            <Header/>
             <hr/>
-            <div><h2>Users</h2></div>
-            <Users/>
-            <hr/>
-            <div><h2>Posts</h2></div>
-            <Posts/>
+            <div><h2>Cars</h2></div>
+            <Cars/>
         </div>
     );
 }

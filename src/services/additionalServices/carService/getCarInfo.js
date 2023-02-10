@@ -1,5 +1,5 @@
-import {urls} from "../endpoints";
-import {axiosRequest} from "../../axios/axiosConfig";
+import {urls} from "../../../configs/urls";
+import {axiosRequest} from "../../axiosService/axiosConfig";
 
 export const getCars = {
     getAll: () => axiosRequest.get(urls.cars),
