@@ -34,8 +34,11 @@ const Form = () => {
     return (
         <form onSubmit={handleSubmit(carForUpdate ? update : create)}>
             <input type="text" placeholder={'brand'} {...register('brand')}/>
+            {errors.brand&&<span>{errors.brand.message}</span>}
             <input type="text" placeholder={'price'} {...register('price', {valueAsNumber: true})}/>
+            {errors.price&&<span>{errors.price.message}</span>}
             <input type="text" placeholder={'year'} {...register('year', {valueAsNumber: true})}/>
+            {errors.year&&<span>{errors.year.message}</span>}
             <button disabled={!isValid}>{carForUpdate ? 'update' : 'create'}</button>
         </form>
     );
