@@ -1,37 +1,68 @@
-// import {launchService} from "./services/launchService";
-// launchService.getAll().then(({data})=>{
-//    const {mission_name}= data[2];
-// })
-
-const user1 = (name:string,age:number,gender:string):[string,number,string] => {
-   return [name,age,gender]
+interface ICores {
+    flight: number;
+    core: {
+        reuse_count: number;
+        status: string
+    }
 }
 
-console.log(user1('Max',18,'male'));
+interface IPayloads {
+    payload_type: string;
+    payload_mass_kg: number;
+    payload_mass_lbs: number
+}
 
-const user2:[string,number,string]=["Mary", 16,'female']
-console.log(user2);
+interface ILaunch {
+    mission_name: string;
+    launch_date_local: string;
+    launch_site: {
+        site_name_long: string;
+    }
+    links: {
+        article_link: string;
+        video_link: string
+    }
+    rocket:{
+        rocket_name: string;
+        first_stage: {
+            cores: ICores[]
+        }
+        second_stage: {
+            payloads:IPayloads[]
+        }
+    }
+}
 
+const user = {
+    name:"Max",
+    age:18,
+    gender:'male'
+}
+
+interface IUser {
+
+    name:string;
+
+    age:number;
+
+    gender:string
+}
 
 function sum(a:number,b:number):number {
     return a+b
 }
 
-function showSum(a:number,b:number){
+function showSum(a:number,b:number):void{
     console.log(a + b);
 }
 
-function incAge(someUser:{readonly}, inc:number):number{
+function incAge(someUser:IUser, inc:number):number{
     someUser.age+=inc
     return someUser
 }
 
-const user3 = {
-   name:"Max",
-   age:18,
-   gender:'male'
-}
+
 
 console.log(sum(1, 2));
 showSum(2,3)
-incAge(user3, 2)
+incAge(user, 2)
