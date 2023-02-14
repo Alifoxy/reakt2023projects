@@ -68,20 +68,16 @@ const carSlice = createSlice({
             state.updateCar=action.payload
         }
     },
-    extraReducers:{
-        [getAll.fulfilled]:(state,action)=>{
-            state.loading=false
-            state.posts=action.payload
-        },
-        [getAll.rejected]:(state,action)=>{
-            state.loading=false
-            state.errors=action.payload
-        },
-        [getAll.pending]:(state)=>{
-            state.loading=true
-        },
-
-    }
+    extraReducers:builder =>
+        builder
+            .addCase(getAll.fulfilled, (state, action) => {
+                state.cars = action.payload
+                state.loading = false
+            })
+            .addDefaultCase((state, action) => {
+                const [actionStatus] = action.type.split('/').slice(-1);
+                state.loading = actionStatus === 'pending';
+            })
 });
 
 
