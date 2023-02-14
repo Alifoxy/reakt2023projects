@@ -8,7 +8,7 @@ const Cars = () => {
 
     const dispatch = useDispatch();
 
-    const {cars,errors,loading} = useSelector(state => state.cars);
+    const {cars,errors} = useSelector(state => state.cars);
 
     useEffect(() => {
         (dispatch(carActions.getAll()))
@@ -16,7 +16,6 @@ const Cars = () => {
 
     return (
         <div>
-            {loading && <h2>Loading, pls wait .............................</h2>}
             {errors && JSON.stringify(errors)}
             {cars.map(car => <Car key={car.id} car={car}/>)}
         </div>

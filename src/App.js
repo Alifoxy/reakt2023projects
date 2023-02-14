@@ -11,7 +11,7 @@ const App = () => {
         <div>
             <Header/>
             <hr/>
-            {loading && <h1>Loading..................</h1>}
+            {loading && <h2>Loading, pls wait .............................</h2>}
             <Cars/>
         </div>
     );
