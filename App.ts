@@ -33,11 +33,6 @@ interface ILaunch {
     }
 }
 
-const user = {
-    name:"Max",
-    age:18,
-    gender:'male'
-}
 
 interface IUser {
 
@@ -48,6 +43,12 @@ interface IUser {
     gender:string
 }
 
+const user: IUser = {
+    name:"Max",
+    age:18,
+    gender:'male'
+}
+
 function sum(a:number,b:number):number {
     return a+b
 }
@@ -56,11 +57,10 @@ function showSum(a:number,b:number):void{
     console.log(a + b);
 }
 
-function incAge(someUser:IUser, inc:number):number{
+function incAge(someUser:IUser, inc:number):IUser{
     someUser.age+=inc
     return someUser
 }
-
 
 
 console.log(sum(1, 2));
